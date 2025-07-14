@@ -109,10 +109,10 @@ Ingeniero Civil Industrial (U. de los Andes)
 
 ##  ¿Qué vas a lograr?
 
-✔ Aplicar teoría avanzada de IA en entornos reales  
-✔ Construir soluciones de PLN explicables y eficientes  
-✔ Dominar la transición de **modelo** a **agente inteligente**  
-✔ Ser arquitecto de sistemas autónomos basados en LLMs  
+ Aplicar teoría avanzada de IA en entornos reales  
+ Construir soluciones de PLN explicables y eficientes  
+ Dominar la transición de **modelo** a **agente inteligente**  
+ Ser arquitecto de sistemas autónomos basados en LLMs  
 
 ---
 
