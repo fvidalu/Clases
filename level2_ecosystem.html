@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Códice IV: El Ecosistema de Modelos [Edición Definitiva] - El Códice de la IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        :root {
+            --blue-100: #e8f0fe; --blue-500: #1a73e8; --blue-700: #174ea6;
+            --red-100: #fce8e6; --red-500: #ea4335; --red-700: #c5221f;
+            --yellow-100: #fef7e0; --yellow-500: #fbbc04; --yellow-700: #f29900;
+            --green-100: #e6f4ea; --green-500: #34a853; --green-700: #1e8e3e;
+            --purple-100: #f3e8fd; --purple-500: #9333ea; --purple-700: #6b21a8;
+            --gray-900: #202124; --gray-800: #3c4043; --gray-700: #5f6368; --gray-200: #e8eaed; --gray-100: #f1f3f4; --gray-50: #f8f9fa;
+            --bg-color: #fff; --text-color: var(--gray-800);
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes draw-line { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.75; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Google Sans', sans-serif; color: var(--gray-900); letter-spacing: -0.02em; }
+        .content-section { animation: fadeIn 0.8s ease-out forwards; border-bottom: 1px solid var(--gray-200); padding-bottom: 4rem; margin-bottom: 4rem; }
+        .content-section:last-child { border-bottom: none; }
+        .concept-box { background-color: var(--gray-50); border: 1px solid var(--gray-200); border-left: 4px solid var(--blue-500); padding: 24px; border-radius: 8px; margin: 2rem 0; }
+        .deep-dive-box { background-color: var(--yellow-100); border: 1px solid var(--yellow-500); border-left: 4px solid var(--yellow-700); padding: 24px; border-radius: 8px; margin: 2rem 0; }
+        .business-case-box { background-color: var(--green-100); border: 1px solid var(--green-500); border-left: 4px solid var(--green-700); padding: 24px; border-radius: 8px; margin: 2rem 0; }
+        .visualization { background: linear-gradient(145deg, #ffffff, #f7f8fa); border: 1px solid var(--gray-200); border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
+        .visualization > svg,
+        .visualization > img,
+        .visualization > iframe {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .code-block { background-color: #202124; color: #e8eaed; border-radius: 8px; padding: 16px; margin: 1rem 0; overflow-x: auto; font-family: 'Roboto Mono', monospace; font-size: 0.9em; }
+        .formula-box { background-color: var(--blue-100); border: 1px solid var(--blue-500); color: var(--gray-900); padding: 1.5rem; margin: 1rem 0; border-radius: 8px; text-align: center; font-family: 'Roboto Mono', monospace; font-size: 1.1em; }
+        .wow-animation-card { background: radial-gradient(circle, rgba(26,115,232,0.1) 0%, rgba(255,255,255,0) 70%); border: 1px solid var(--blue-200); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold font-googlesans text-gray-800 hover:text-blue-500 transition-colors">El Códice de la IA</a>
+            <a href="index.html#chapters" class="text-blue-500 hover:underline font-medium">Volver a los Códices</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 pt-24">
+
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Códice IV: El Ecosistema de Modelos</h1>
+            <p class="text-xl text-gray-600 mb-12">Un safari por el zoológico de los LLMs. Analizamos las familias BERT, GPT y T5, sus filosofías de diseño y sus aplicaciones ideales.</p>
+
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">Objetivos del Códice IV</h2>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Comprender el pre-entrenamiento y el fine-tuning de los LLMs.</li>
+                    <li>Diferenciar entre las familias BERT, GPT y T5.</li>
+                    <li>Evaluar modelos con métricas como BLEU, ROUGE y BERTScore.</li>
+                </ul>
+                <p class="mt-4">Exploraremos ejemplos de negocio y diagramas para conectar teoría y práctica.</p>
+            </section>
+
+            <!-- Section 1: The Great Divide -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">1. La Gran Bifurcación: Comprensión vs. Generación</h2>
+                <p class="mb-4">Una vez que la arquitectura Transformer fue creada, la comunidad de IA se dio cuenta de que no necesitaba usarla entera para todas las tareas. Rápidamente, surgieron dos grandes filosofías, dando lugar a dos familias de modelos.</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">La Arquitectura Transformer se Divide</h4>
+                    <svg width="100%" height="auto" viewBox="0 0 800 300">
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;} .desc{font-family: 'Roboto', sans-serif; text-anchor: middle; font-size: 14px;}</style>
+                        <defs><marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/></marker></defs>
+                        <!-- Full Transformer -->
+                        <g><rect x="300" y="20" width="200" height="60" rx="10" fill="#F1F3F4"/><text x="400" y="55" class="label">Transformer Completo</text></g>
+                        <!-- Paths -->
+                        <path d="M 400 80 V 120" stroke="#5f6368" stroke-width="2"/>
+                        <path d="M 200 120 H 600" stroke="#5f6368" stroke-width="2"/>
+                        <path d="M 200 120 V 160" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <path d="M 600 120 V 160" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- Encoder-Only -->
+                        <g><rect x="100" y="160" width="200" height="100" rx="10" fill="#E8F0FE"/><text x="200" y="190" class="label" fill="#1A73E8">Solo Encoders (BERT)</text><text x="200" y="220" class="desc">Maestros de la Comprensión</text></g>
+                        <!-- Decoder-Only -->
+                        <g><rect x="500" y="160" width="200" height="100" rx="10" fill="#E6F4EA"/><text x="600" y="190" class="label" fill="#34A853">Solo Decoders (GPT)</text><text x="600" y="220" class="desc">Maestros de la Generación</text></g>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Section 1.1: Multimodal Models -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">1.1 Más Allá del Texto: Modelos Multimodales</h2>
+                <p class="mb-4">La inteligencia no se limita al lenguaje. Los modelos multimodales son aquellos que pueden procesar y generar información a través de múltiples modalidades, como texto, imágenes, audio y video. Esto les permite una comprensión más rica del mundo y la capacidad de interactuar de formas más naturales.</p>
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Ejemplos de Modelos Multimodales:</h4>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li><b>Visión y Lenguaje (VLM):</b> Modelos que pueden entender imágenes y responder preguntas sobre ellas, o generar descripciones de imágenes. Ejemplos incluyen CLIP, DALL-E, Midjourney, y modelos que potencian la búsqueda visual.</li>
+                        <li><b>Audio y Lenguaje:</b> Modelos que pueden transcribir voz a texto, o generar voz a partir de texto (Text-to-Speech). También pueden entender el tono y la emoción en el audio.</li>
+                        <li><b>Video y Lenguaje:</b> Modelos capaces de resumir el contenido de un video, responder preguntas sobre eventos en un video, o generar videos a partir de descripciones de texto.</li>
+                    </ul>
+                    <p class="mt-2"><strong>Impacto en el Negocio:</strong> Los modelos multimodales abren un abanico de nuevas aplicaciones. Desde asistentes virtuales que pueden "ver" lo que el usuario ve, hasta sistemas de seguridad que analizan video y audio para detectar anomalías, o herramientas de marketing que generan contenido visual y textual a partir de una simple descripción. La capacidad de integrar diferentes tipos de información permite soluciones más completas y eficientes.</p>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">1.2 Modelos de Lenguaje Multimodales en Acción</h2>
+                <p class="mb-4">Para ilustrar el poder de los modelos multimodales, aquí tienes un ejemplo interactivo de cómo un modelo puede generar una descripción textual a partir de una imagen.</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">Generación de Descripción de Imagen (Image Captioning)</h4>
+                    <p class="text-center text-sm mb-4">Sube una imagen o usa una de ejemplo para ver cómo un modelo multimodal genera una descripción.</p>
+                    <div class="flex flex-col items-center">
+                        <div class="w-full max-w-md bg-gray-100 p-4 rounded-lg border border-gray-200">
+                            <input type="file" id="image-upload" accept="image/*" class="mb-4">
+                            <img id="image-preview" src="https://via.placeholder.com/300?text=Sube+una+imagen" alt="Previsualización de imagen" class="w-full h-48 object-cover rounded-md mb-4">
+                            <button id="generate-caption" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Generar Descripción</button>
+                            <div class="mt-4">
+                                <p class="font-semibold">Descripción Generada:</p>
+                                <p id="caption-output" class="mt-2 p-3 bg-white rounded-md border border-gray-200 italic text-gray-700">Esperando imagen...</p>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementById('image-upload').addEventListener('change', function(event) {
+                                const reader = new FileReader();
+                                reader.onload = function() {
+                                    document.getElementById('image-preview').src = reader.result;
+                                };
+                                reader.readAsDataURL(event.target.files[0]);
+                            });
+
+                            document.getElementById('generate-caption').addEventListener('click', function() {
+                                const imageUrl = document.getElementById('image-preview').src;
+                                if (imageUrl.includes('placeholder')) {
+                                    document.getElementById('caption-output').innerText = "Por favor, sube una imagen primero.";
+                                    return;
+                                }
+                                // Simulate API call to a multimodal model
+                                document.getElementById('caption-output').innerText = "Generando descripción...";
+
+                                // In a real application, you would send the image to a backend API
+                                // that uses a model like ViT-GPT2, BLIP, or Flamingo to generate the caption.
+                                // For demonstration, we'll use a simple mock response.
+                                setTimeout(() => {
+                                    const captions = [
+                                        "Una persona caminando por un parque con árboles.",
+                                        "Un paisaje urbano con edificios altos y un cielo azul.",
+                                        "Un perro jugando con una pelota en el césped.",
+                                        "Un plato de comida deliciosa en una mesa.",
+                                        "Un grupo de personas riendo y conversando."
+                                    ];
+                                    const randomCaption = captions[Math.floor(Math.random() * captions.length)];
+                                    document.getElementById('caption-output').innerText = randomCaption;
+                                }, 2000);
+                            });
+                        </script>
+                    </div>
+    <div class="visualization mt-8">
+        <h4 class="text-xl font-bold text-center mb-4">Ejemplo con Resultado</h4>
+        <img src="https://via.placeholder.com/400x250.png?text=Paisaje" alt="Paisaje de ejemplo" class="mx-auto rounded mb-4">
+        <p class="text-center text-sm">Descripción generada: Un paisaje urbano con edificios altos y un cielo azul.</p>
+    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: BERT -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">2. El Camino del Encoder: BERT y la Comprensión Profunda</h2>
+                <p class="mb-4">La familia BERT (Bidirectional Encoder Representations from Transformers) se deshizo de la parte del Decoder. Su único objetivo es leer texto y generar una representación numérica rica en contexto para cada palabra. Son los "lectores" del mundo de la IA.</p>
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Objetivos de Pre-entrenamiento de BERT</h4>
+                    <p>Para forzar a BERT a aprender el contexto bidireccional y las relaciones entre oraciones, los investigadores lo entrenaron en dos tareas ingeniosas simultáneamente:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2 mt-2">
+                        <li><strong>Masked Language Model (MLM):</strong> Ocultar el 15% de las palabras en una oración con un token `[MASK]` y pedirle al modelo que adivine las palabras originales. Esto fuerza al modelo a aprender el contexto de ambas direcciones.</li>
+                        <li><strong>Next Sentence Prediction (NSP):</strong> Darle al modelo dos oraciones, A y B, y pedirle que prediga si la oración B es la continuación real de la oración A en el texto original. Esto le enseña al modelo a entender las relaciones entre oraciones.</li>
+                    </ul>
+                </div>
+                <h3 class="text-2xl font-bold mt-8 mb-4">Animación del Masked Language Model (MLM)</h3>
+                <div class="visualization">
+                    <svg width="100%" height="auto" viewBox="0 0 800 300">
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;} .token{font-family: 'Roboto Mono', sans-serif; text-anchor: middle; font-size: 16px;}</style>
+                        <!-- Input Sentence -->
+                        <text x="400" y="50" class="token">El gato [MASK] sobre la alfombra</text>
+                        <path d="M 400 60 V 100" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- BERT Model -->
+                        <g><rect x="300" y="100" width="200" height="80" rx="10" fill="#E8F0FE"/><text x="400" y="145" class="label" fill="#1A73E8">BERT</text></g>
+                        <path d="M 400 180 V 220" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- Output -->
+                        <g>
+                            <rect x="300" y="220" width="200" height="60" rx="10" fill="#FBBC04"/>
+                            <text x="400" y="255" class="label">Predicción para [MASK]</text>
+                            <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="2s" repeatCount="indefinite" />
+                        </g>
+                        <text x="400" y="280" class="token">1. "duerme" (92%)</text>
+                        <text x="400" y="300" class="token">2. "salta" (5%)</text>
+                    </svg>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-12 mb-4">El Paradigma de Pre-entrenamiento y Fine-Tuning</h3>
+                <p>La verdadera revolución de estos modelos no es solo su arquitectura, sino el paradigma de dos fases en el que operan:</p>
+                <ol class="list-decimal list-inside ml-4 space-y-2 mt-4">
+                    <li><b>Pre-entrenamiento (Pre-training):</b> Un modelo masivo se entrena en una tarea auto-supervisada sobre una cantidad ingente de texto no etiquetado (como toda la Wikipedia e internet). En esta fase, el modelo aprende gramática, sintaxis, semántica y una vasta cantidad de conocimiento del mundo. Es un proceso carísimo que solo unas pocas organizaciones pueden permitirse.</li>
+                    <li><b>Ajuste Fino (Fine-tuning):</b> Tomamos el modelo pre-entrenado, que es un "generalista" del lenguaje, y lo adaptamos a una tarea específica (como clasificación de sentimiento o extracción de entidades) entrenándolo durante un corto periodo de tiempo en un dataset mucho más pequeño y específico para esa tarea.</li>
+                </ol>
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Visualización del Proceso de Fine-Tuning</h4>
+                    <svg width="100%" height="auto" viewBox="0 0 800 300">
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;} .desc{font-family: 'Roboto', sans-serif; text-anchor: middle; font-size: 12px;}</style>
+                        <!-- Pre-trained Model -->
+                        <g>
+                            <rect x="50" y="100" width="200" height="100" rx="10" fill="#E8F0FE" stroke="#1A73E8"/>
+                            <text x="150" y="140" class="label">Modelo Pre-entrenado</text>
+                            <text x="150" y="160" class="desc">(Conocimiento General)</text>
+                        </g>
+                        <path d="M 250 150 H 350" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- Fine-tuning -->
+                        <g>
+                            <rect x="350" y="50" width="100" height="200" rx="10" fill="#FEF7E0" stroke="#FBBC04"/>
+                            <text x="400" y="140" class="label">Fine-Tuning</text>
+                            <text x="400" y="160" class="desc">+ Datos Específicos</text>
+                        </g>
+                        <path d="M 450 150 H 550" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- Specialized Model -->
+                        <g>
+                            <rect x="550" y="100" width="200" height="100" rx="10" fill="#E6F4EA" stroke="#34A853"/>
+                            <text x="650" y="140" class="label">Modelo Especializado</text>
+                            <text x="650" y="160" class="desc">(Experto en una Tarea)</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="deep-dive-box mt-8">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Destilación de Modelos: Creando Modelos más Pequeños y Rápidos</h4>
+                    <p>Los modelos como BERT son enormes y costosos de ejecutar. La <strong>destilación de conocimiento</strong> es una técnica para transferir el conocimiento de un modelo grande y complejo (el "maestro") a un modelo más pequeño y simple (el "estudiante"). El estudiante aprende a imitar las salidas del maestro, resultando en un modelo mucho más eficiente con una pérdida mínima de rendimiento. Un ejemplo famoso es <strong>DistilBERT</strong>, una versión destilada de BERT que es un 60% más pequeña y un 40% más rápida.</p>
+                </div>
+
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Diagrama de Flujo: Destilación de Conocimiento</h4>
+                    <p class="text-center text-sm mb-4">Este diagrama de flujo muestra cómo se transfiere el conocimiento de un modelo maestro a un modelo estudiante.</p>
+                    <svg width="100%" height="auto" viewBox="0 0 800 300">
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;} .desc{font-family: 'Roboto', sans-serif; text-anchor: middle; font-size: 12px;}</style>
+                        <defs><marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/></marker></defs>
+                        <!-- Teacher Model -->
+                        <g>
+                            <rect x="50" y="100" width="200" height="100" rx="10" fill="#E8F0FE" stroke="#1A73E8"/>
+                            <text x="150" y="140" class="label">Modelo Maestro</text>
+                            <text x="150" y="160" class="desc">(Grande y Complejo)</text>
+                        </g>
+                        <path d="M 250 150 H 350" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- Distillation -->
+                        <g>
+                            <rect x="350" y="50" width="100" height="200" rx="10" fill="#FEF7E0" stroke="#FBBC04"/>
+                            <text x="400" y="140" class="label">Destilación</text>
+                            <text x="400" y="160" class="desc">+ Datos</text>
+                        </g>
+                        <path d="M 450 150 H 550" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <!-- Student Model -->
+                        <g>
+                            <rect x="550" y="100" width="200" height="100" rx="10" fill="#E6F4EA" stroke="#34A853"/>
+                            <text x="650" y="140" class="label">Modelo Estudiante</text>
+                            <text x="650" y="160" class="desc">(Pequeño y Rápido)</text>
+                        </g>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Section 3: The Zoo of Models -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">3. Un Safari por el Zoológico de Modelos</h2>
+                <p class="mb-4">Las tres grandes familias de modelos —BERT, GPT y T5— tienen filosofías de diseño distintas que los hacen más adecuados para diferentes tipos de tareas.</p>
+                <div class="visualization">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Modelo</th>
+                                <th scope="col" class="px-6 py-3">Arquitectura</th>
+                                <th scope="col" class="px-6 py-3">Tarea Ideal</th>
+                                <th scope="col" class="px-6 py-3">Aplicación de Negocio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-blue-600">BERT</th>
+                                <td class="px-6 py-4">Solo Encoder (Bidireccional)</td>
+                                <td class="px-6 py-4">Clasificación, Extracción (NER), Q&A</td>
+                                <td class="px-6 py-4">Analizar reviews de productos, enrutar tickets de soporte, buscar cláusulas en contratos.</td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-green-600">GPT</th>
+                                <td class="px-6 py-4">Solo Decoder (Auto-regresivo)</td>
+                                <td class="px-6 py-4">Generación de texto, Resumen, Chatbots</td>
+                                <td class="px-6 py-4">Redactar borradores de correos, crear descripciones de productos, potenciar un asistente virtual.</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="row" class="px-6 py-4 font-medium text-yellow-800">T5</th>
+                                <td class="px-6 py-4">Encoder-Decoder</td>
+                                <td class="px-6 py-4">Traducción, Tareas de "texto-a-texto"</td>
+                                <td class="px-6 py-4">Traducir documentación técnica, convertir lenguaje natural en consultas de base de datos (SQL).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Comparación de Modelos de la Familia BERT</h4>
+                    <p class="text-center text-sm mb-4">Esta tabla compara diferentes modelos de la familia BERT, destacando sus diferencias en tamaño y rendimiento.</p>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Modelo</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tamaño</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rendimiento</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">BERT-Base</td>
+                                <td class="px-6 py-4 whitespace-nowrap">110M parámetros</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Base</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">BERT-Large</td>
+                                <td class="px-6 py-4 whitespace-nowrap">340M parámetros</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Alto</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">DistilBERT</td>
+                                <td class="px-6 py-4 whitespace-nowrap">66M parámetros</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Medio-Alto</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">RoBERTa</td>
+                                <td class="px-6 py-4 whitespace-nowrap">125M parámetros</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Alto</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Diagrama de Flujo: Proceso de Fine-Tuning</h4>
+                    <p class="text-center text-sm mb-4">Este diagrama de flujo ilustra el proceso de fine-tuning de un modelo de lenguaje para una tarea específica.</p>
+                    <div id="flowchart-finetuning"></div>
+                    <script>
+                        let flowchartHtml = '<svg width="100%" height="300" viewBox="0 0 800 300">';
+                        flowchartHtml += '<defs><marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/></marker></defs>';
+                        flowchartHtml += '<g transform="translate(50,50)">';
+
+                        // Nodos
+                        flowchartHtml += '<rect x="0" y="0" width="150" height="80" rx="10" fill="#E8F0FE" stroke="#1A73E8"/><text x="75" y="45" text-anchor="middle">Modelo Pre-entrenado</text>';
+                        flowchartHtml += '<rect x="250" y="0" width="150" height="80" rx="10" fill="#E6F4EA" stroke="#34A853"/><text x="325" y="45" text-anchor="middle">Dataset Específico</text>';
+                        flowchartHtml += '<rect x="500" y="0" width="150" height="80" rx="10" fill="#FEF7E0" stroke="#FBBC04"/><text x="575" y="45" text-anchor="middle">Proceso de Fine-Tuning</text>';
+                        flowchartHtml += '<rect x="250" y="150" width="150" height="80" rx="10" fill="#FCE8E6" stroke="#EA4335"/><text x="325" y="195" text-anchor="middle">Modelo Especializado</text>';
+
+                        // Enlaces
+                        flowchartHtml += '<path d="M150 40 L 250 40" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>';
+                        flowchartHtml += '<path d="M400 40 L 500 40" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>';
+                        flowchartHtml += '<path d="M575 80 L 575 150 L 400 150" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>';
+
+                        flowchartHtml += '</g></svg>';
+                        document.getElementById('flowchart-finetuning').innerHTML = flowchartHtml;
+                    </script>
+                </div>
+                <h3 class="text-2xl font-bold mt-12 mb-4">3.1 Hugging Face: El Epicentro del Ecosistema</h3>
+                <p class="mb-4">Hugging Face se ha convertido en el centro neurálgico del desarrollo y la democratización de los modelos de lenguaje. No es solo una empresa, sino una comunidad y una plataforma que ofrece herramientas, modelos y datasets para facilitar el trabajo con PLN y LLMs.</p>
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Componentes Clave del Ecosistema Hugging Face:</h4>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li><strong>Transformers Library:</strong> Una biblioteca de Python que proporciona implementaciones de miles de modelos pre-entrenados (BERT, GPT, T5, etc.) y herramientas para fine-tuning, tokenización y uso en producción. Simplifica enormemente el acceso a la vanguardia del PLN.</li>
+                        <li><strong>Hugging Face Hub:</strong> Un repositorio centralizado donde la comunidad puede compartir y descubrir modelos, datasets y demos. Es como el GitHub para modelos de IA, permitiendo la colaboración y la reutilización de recursos.</li>
+                        <li><strong>Datasets Library:</strong> Facilita el acceso y la manipulación de una vasta colección de datasets para entrenar y evaluar modelos de PLN.</li>
+                        <li><strong>Accelerate Library:</strong> Ayuda a los desarrolladores a entrenar modelos de forma eficiente en diferentes configuraciones de hardware (múltiples GPUs, TPUs) con cambios mínimos en el código.</li>
+                        <li><strong>Diffusers Library:</strong> Una biblioteca para trabajar con modelos de difusión, que son la base de la generación de imágenes de última generación (como Stable Diffusion). Permite a los usuarios generar imágenes a partir de texto, o manipular imágenes existentes.</li>
+                        <li><strong>Spaces:</strong> Una plataforma para construir y compartir aplicaciones de demostración de IA de forma rápida y sencilla. Permite a los desarrolladores mostrar sus modelos en acción sin necesidad de configurar infraestructura compleja.</li>
+                    </ul>
+                    <p class="mt-2"><strong>Impacto en el Negocio:</strong> Hugging Face ha democratizado el acceso a modelos de IA de última generación. Las empresas pueden aprovechar modelos pre-entrenados para tareas específicas (análisis de sentimiento, resumen, traducción, generación de imágenes) con un esfuerzo y costo significativamente menores que si tuvieran que entrenar modelos desde cero. Esto acelera la innovación y permite a equipos más pequeños implementar soluciones de IA avanzadas.</p>
+                </div>
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Mapa del Ecosistema LLM</h4>
+                    <svg width="100%" height="200" viewBox="0 0 700 200">
+                        <style>.eco{fill:#F1F3F4;stroke:#5f6368;} .earr{stroke:#5f6368;stroke-width:2;marker-end:url(#earr);}.etext{font-family:'Google Sans';font-size:14px;text-anchor:middle;}</style>
+                        <defs><marker id="earr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+                        <rect x="20" y="80" width="120" height="40" rx="8" class="eco"/>
+                        <text x="80" y="105" class="etext">Datasets</text>
+                        <path d="M140 100H260" class="earr"/>
+                        <rect x="260" y="80" width="120" height="40" rx="8" class="eco"/>
+                        <text x="320" y="105" class="etext">Modelos</text>
+                        <path d="M380 100H500" class="earr"/>
+                        <rect x="500" y="80" width="120" height="40" rx="8" class="eco"/>
+                        <text x="560" y="105" class="etext">Aplicaciones</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Section 4: Evaluation Metrics -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">4. ¿Qué tan bueno es mi modelo? Métricas con Contexto de Negocio</h2>
+                <p class="mb-4">No podemos mejorar lo que no podemos medir. Elegir la métrica correcta es crucial y depende del impacto que los errores del modelo tengan en el negocio.</p>
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">El Costo de los Errores: Falsos Positivos vs. Falsos Negativos</h4>
+                    <p>Imagina un clasificador de spam. Un <strong>Falso Positivo</strong> es un correo importante que se marca como spam (alto costo, el usuario pierde información vital). Un <strong>Falso Negativo</strong> es un correo de spam que llega a la bandeja de entrada (bajo costo, una molestia). En este caso, queremos maximizar la <strong>Precisión</strong> (minimizar los falsos positivos) incluso si eso significa que se nos escape algo de spam (menor Recall).</p>
+                    <p class="mt-2"><strong>Ejemplo de Negocio: Diagnóstico Médico (Detección de Enfermedades)</strong></p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Falso Positivo:</strong> Un paciente sano es diagnosticado con una enfermedad grave. Costo: Estrés innecesario, pruebas adicionales costosas, tratamientos erróneos.</li>
+                        <li><strong>Falso Negativo:</strong> Un paciente enfermo es diagnosticado como sano. Costo: La enfermedad no se trata, puede empeorar, riesgo para la vida del paciente.</li>
+                    </ul>
+                    <p class="mt-2">En este escenario, un Falso Negativo tiene un costo mucho mayor. Por lo tanto, priorizaríamos el <strong>Recall</strong> (sensibilidad) para asegurarnos de identificar a la mayoría de los enfermos, incluso si eso significa tener algunos Falsos Positivos.</p>
+                </div>
+                <div class="visualization grid md:grid-cols-2 gap-8 mt-8">
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Métricas de Clasificación</h4>
+                        <p><strong>Precision:</strong> De todo lo que predijimos como "Clase A", ¿qué porcentaje era realmente "Clase A"? <br><em>(Cuándo usar: Cuando el costo de un Falso Positivo es alto, como en la detección de spam o la aprobación de préstamos).</em></p>
+                        <p class="mt-2"><strong>Recall (Sensibilidad):</strong> De todo lo que era realmente "Clase A", ¿qué porcentaje logramos identificar? <br><em>(Cuándo usar: Cuando el costo de un Falso Negativo es alto, como en diagnósticos médicos o detección de fraude).</em></p>
+                        <p class="mt-2"><strong>F1-Score:</strong> La media armónica de Precisión y Recall. Es una buena métrica general si ambos tipos de error son igualmente importantes.</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Métricas de Generación</h4>
+                        <p><strong>BLEU:</strong> Mide la similitud de n-gramas entre el texto generado y las referencias. Penaliza la longitud si el texto es demasiado corto. Bueno para tareas como la traducción, donde la precisión es clave.</p>
+                        <p class="mt-2"><strong>ROUGE:</strong> Se enfoca en el recall de n-gramas. Mide cuántas palabras del texto de referencia aparecen en el texto generado. Es la métrica estándar para evaluar la calidad de los resúmenes automáticos.</p>
+                        <p class="mt-2"><strong>BERTScore:</strong> Calcula una coincidencia semántica utilizando embeddings de un modelo preentrenado. Es útil cuando queremos evaluar la calidad semántica más allá de las palabras exactas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Summary -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">Resumen del Códice IV: El Ecosistema de Modelos</h2>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">3.4 Línea de Tiempo de LLMs</h2>
+    <p class="mb-4">Desde los primeros experimentos con Transformers hasta los modelos gigantes contemporáneos, esta línea de tiempo resume los hitos principales.</p>
+    <div class="visualization">
+        <svg width="100%" height="200" viewBox="0 0 800 200">
+            <style>.year{font-family:Google Sans;font-weight:bold;text-anchor:middle;} .event{font-family:Roboto;font-size:12px;text-anchor:middle;}</style>
+            <line x1="50" y1="100" x2="750" y2="100" stroke="#5f6368" stroke-width="2"/>
+            <g>
+                <circle cx="100" cy="100" r="6" fill="#1A73E8"/>
+                <text x="100" y="80" class="year">2018</text>
+                <text x="100" y="120" class="event">BERT</text>
+            </g>
+            <g>
+                <circle cx="250" cy="100" r="6" fill="#1A73E8"/>
+                <text x="250" y="80" class="year">2019</text>
+                <text x="250" y="120" class="event">GPT-2</text>
+            </g>
+            <g>
+                <circle cx="400" cy="100" r="6" fill="#1A73E8"/>
+                <text x="400" y="80" class="year">2020</text>
+                <text x="400" y="120" class="event">T5</text>
+            </g>
+            <g>
+                <circle cx="550" cy="100" r="6" fill="#1A73E8"/>
+                <text x="550" y="80" class="year">2023</text>
+                <text x="550" y="120" class="event">GPT-4</text>
+            </g>
+            <g>
+                <circle cx="700" cy="100" r="6" fill="#1A73E8"/>
+                <text x="700" y="80" class="year">2024</text>
+                <text x="700" y="120" class="event">Modelos Multimodales</text>
+            </g>
+        </svg>
+    </div>
+</section>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">5.8 Caso de Negocio: Monitor de Tendencias</h2>
+    <p class="mb-4">Se utilizan streams de noticias y LLMs para identificar nuevos temas emergentes.</p>
+    <div class="visualization">
+        <h4 class="text-xl font-bold text-center mb-4">Flujo Simplificado</h4>
+        <svg width="100%" height="120" viewBox="0 0 600 120">
+            <style>.step{fill:#FCE8E6;stroke:#EA4335;} .arr{stroke:#EA4335;stroke-width:2;marker-end:url(#trendAr);}</style>
+            <defs><marker id="trendAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#EA4335"/></marker></defs>
+            <g><rect x="40" y="40" width="120" height="40" rx="6" class="step"/><text x="100" y="65" text-anchor="middle">Noticias</text></g>
+            <path d="M160 60H280" class="arr"/>
+            <g><rect x="280" y="40" width="120" height="40" rx="6" class="step"/><text x="340" y="65" text-anchor="middle">Embeddings</text></g>
+            <path d="M400 60H520" class="arr"/>
+            <g><rect x="520" y="40" width="80" height="40" rx="6" class="step"/><text x="560" y="65" text-anchor="middle">Alertas</text></g>
+        </svg>
+    </div>
+    <div class="visualization mt-8">
+        <h4 class="text-xl font-bold text-center mb-4">Diagrama Detallado</h4>
+        <svg width="100%" height="160" viewBox="0 0 600 160">
+            <style>.bcase{fill:#F1F3F4;stroke:#5f6368;} .bcarr{stroke:#1A73E8;stroke-width:2;marker-end:url(#bcar);}</style>
+            <defs><marker id="bcar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1A73E8"/></marker></defs>
+            <rect x="40" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="90" y="85" text-anchor="middle">Entrada</text>
+            <path d="M140 80H240" class="bcarr"/>
+            <rect x="240" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="290" y="85" text-anchor="middle">Proceso</text>
+            <path d="M340 80H440" class="bcarr"/>
+            <rect x="440" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="490" y="85" text-anchor="middle">Resultado</text>
+        </svg>
+        <p class="text-center text-sm mt-2">Flujo detallado que complementa el esquema previo.</p>
+    </div>
+</section>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">5.7 Caso de Negocio: Recomendación de Artículos</h2>
+    <p class="mb-4">Con un índice vectorial de publicaciones, un portal propone lecturas según la similitud semántica con las preferencias del usuario.</p>
+    <div class="visualization">
+        <h4 class="text-xl font-bold text-center mb-4">Proceso Simplificado</h4>
+        <svg width="100%" height="150" viewBox="0 0 600 150">
+            <style>.step{fill:#E6F4EA;stroke:#34A853;} .arr{stroke:#5f6368;stroke-width:2;marker-end:url(#recAr);}</style>
+            <defs><marker id="recAr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <rect x="40" y="60" width="120" height="40" rx="8" class="step"/>
+            <text x="100" y="85" text-anchor="middle">Lectura</text>
+            <path d="M160 80H280" class="arr"/>
+            <rect x="280" y="60" width="120" height="40" rx="8" class="step"/>
+            <text x="340" y="85" text-anchor="middle">Vector</text>
+            <path d="M400 80H520" class="arr"/>
+            <rect x="520" y="60" width="120" height="40" rx="8" class="step"/>
+            <text x="580" y="85" text-anchor="middle">Sugerencia</text>
+        </svg>
+        <p class="text-center text-sm mt-2">El sistema encuentra artículos cercanos y genera recomendaciones.</p>
+    </div>
+    <div class="visualization mt-8">
+        <h4 class="text-xl font-bold text-center mb-4">Diagrama Detallado</h4>
+        <svg width="100%" height="160" viewBox="0 0 600 160">
+            <style>.bcase{fill:#F1F3F4;stroke:#5f6368;} .bcarr{stroke:#1A73E8;stroke-width:2;marker-end:url(#bcar);}</style>
+            <defs><marker id="bcar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1A73E8"/></marker></defs>
+            <rect x="40" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="90" y="85" text-anchor="middle">Entrada</text>
+            <path d="M140 80H240" class="bcarr"/>
+            <rect x="240" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="290" y="85" text-anchor="middle">Proceso</text>
+            <path d="M340 80H440" class="bcarr"/>
+            <rect x="440" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="490" y="85" text-anchor="middle">Resultado</text>
+        </svg>
+        <p class="text-center text-sm mt-2">Flujo detallado que complementa el esquema previo.</p>
+    </div>
+</section>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">3.5 Guía de Selección de Modelo</h2>
+    <p class="mb-4">Utiliza este diagrama de flujo para decidir rápidamente qué familia de modelos podría ajustarse mejor a tu problema.</p>
+    <div class="visualization">
+        <svg width="100%" height="300" viewBox="0 0 700 300">
+            <style>.box{fill:#E8F0FE;stroke:#1A73E8;} .desc{font-family:Roboto;font-size:12px;text-anchor:middle;} .arrow{stroke:#5f6368;stroke-width:2;}</style>
+            <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <rect x="300" y="20" width="100" height="40" rx="5" class="box"/>
+            <text x="350" y="45" class="desc">¿Entender o Generar?</text>
+            <path d="M350 60V100" class="arrow" marker-end="url(#arr)"/>
+            <rect x="100" y="100" width="150" height="40" rx="5" class="box"/>
+            <text x="175" y="125" class="desc">Comprensión Profunda</text>
+            <rect x="500" y="100" width="150" height="40" rx="5" class="box"/>
+            <text x="575" y="125" class="desc">Generación Fluida</text>
+            <path d="M350 100L250 120" class="arrow" marker-end="url(#arr)"/>
+            <path d="M350 100L450 120" class="arrow" marker-end="url(#arr)"/>
+            <text x="175" y="170" class="desc">Usa BERT/RoBERTa</text>
+            <text x="575" y="170" class="desc">Usa GPT/BART</text>
+        </svg>
+    </div>
+</section>
+                <p class="mb-4">En este códice, hemos explorado el vasto y dinámico ecosistema de modelos de lenguaje, comprendiendo cómo las arquitecturas Transformer se han diversificado para abordar una amplia gama de tareas de PLN. Hemos visto cómo la filosofía de diseño de un modelo influye en su aplicación ideal y cómo la comunidad de código abierto ha democratizado el acceso a esta tecnología.</p>
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Conceptos Clave Dominados:</h4>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>La <strong>Gran Bifurcación</strong> de la arquitectura Transformer en modelos solo Encoder (comprensión) y solo Decoder (generación).</li>
+                        <li>Las características y aplicaciones de las familias de modelos más influyentes: <strong>BERT</strong> (Encoder-only), <strong>GPT</strong> (Decoder-only) y <strong>T5</strong> (Encoder-Decoder).</li>
+                        <li>El <strong>Paradigma de Pre-entrenamiento y Fine-tuning</strong> como la estrategia dominante para adaptar modelos generales a tareas específicas.</li>
+                        <li>El rol fundamental del ecosistema <strong>Hugging Face</strong> en la democratización y el avance del PLN.</li>
+                    <li>La importancia de elegir las <strong>Métricas de Evaluación</strong> adecuadas (Precisión, Recall, F1-Score, BLEU, ROUGE) según el contexto de negocio y el costo de los errores.</li>
+                    </ul>
+                </div>
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Evolución Hacia Agentes</h4>
+                    <svg width="100%" height="140" viewBox="0 0 700 140">
+                        <style>.step{font-family:Google Sans;font-weight:bold;text-anchor:middle;}</style>
+                        <defs><marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+                        <g>
+                            <rect x="20" y="50" width="150" height="40" rx="10" fill="#E8F0FE"/>
+                            <text x="95" y="75" class="step">LLMs</text>
+                        </g>
+                        <path d="M170 70H270" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <g>
+                            <rect x="270" y="50" width="160" height="40" rx="10" fill="#E6F4EA"/>
+                            <text x="350" y="75" class="step">Memoria + Herramientas</text>
+                        </g>
+                        <path d="M430 70H530" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <g>
+                            <rect x="530" y="50" width="150" height="40" rx="10" fill="#FEF7E0"/>
+                            <text x="605" y="75" class="step">Agentes</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Mapa de Modelos Populares</h4>
+                    <svg width="100%" height="150" viewBox="0 0 800 150">
+                        <style>.model{font-family:'Google Sans';font-weight:bold;text-anchor:middle;}</style>
+                        <rect x="80" y="50" width="120" height="50" fill="#E8F0FE" stroke="#1A73E8"/>
+                        <text x="140" y="80" class="model">BERT</text>
+                        <rect x="240" y="50" width="120" height="50" fill="#FCE8E6" stroke="#EA4335"/>
+                        <text x="300" y="80" class="model">GPT</text>
+                        <rect x="400" y="50" width="120" height="50" fill="#F3E8FD" stroke="#9333EA"/>
+                        <text x="460" y="80" class="model">T5</text>
+                        <rect x="560" y="50" width="120" height="50" fill="#E6F4EA" stroke="#34A853"/>
+                        <text x="620" y="80" class="model">RoBERTa</text>
+                    </svg>
+                    <p class="text-center text-sm mt-2">Principales familias y sus colores característicos.</p>
+                </div>
+                <h3 class="text-2xl font-bold mt-8 mb-4">El Camino Hacia Adelante: De los Modelos a los Agentes</h3>
+                <p>Ahora que comprendes los modelos de lenguaje más avanzados y cómo se evalúan, estás listo para dar el siguiente gran salto: dotar a estos modelos de la capacidad de razonar, planificar y actuar en el mundo real. Es el momento de transformar oráculos pasivos en agentes inteligentes.</p>
+                <p class="mt-6 text-center text-xl font-bold text-blue-500">Prepárate para el Códice V: La Emergencia de los Agentes.</p>
+            </section>
+
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">5.4 Evolución de Frameworks</h2>
+    <p class="mb-4">Una mirada rápida a cómo las bibliotecas de IA han madurado para soportar LLMs.</p>
+    <div class="visualization">
+        <svg width="100%" height="160" viewBox="0 0 800 160">
+            <style>.lib{font-family:'Google Sans';font-weight:bold;text-anchor:middle;} .line{stroke:#5f6368;stroke-width:2;} </style>
+            <line x1="100" y1="80" x2="700" y2="80" class="line" />
+            <circle cx="150" cy="80" r="8" fill="#1A73E8"/><text x="150" y="60" class="lib">NLTK</text>
+            <circle cx="300" cy="80" r="8" fill="#EA4335"/><text x="300" y="60" class="lib">SpaCy</text>
+            <circle cx="450" cy="80" r="8" fill="#34A853"/><text x="450" y="60" class="lib">TensorFlow</text>
+            <circle cx="600" cy="80" r="8" fill="#FBBC04"/><text x="600" y="60" class="lib">HuggingFace</text>
+        </svg>
+    </div>
+</section>
+
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">5.5 Pipeline RLHF de Alto Nivel</h2>
+    <p class="mb-4">Este diagrama resume las etapas clave del Aprendizaje por Refuerzo con Retroalimentación Humana.</p>
+    <div class="visualization">
+        <svg width="100%" height="200" viewBox="0 0 800 200">
+            <style>.step{font-family:'Google Sans';font-weight:bold;text-anchor:middle;} .arrow{stroke:#5f6368;stroke-width:2;}</style>
+            <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <rect x="40" y="60" width="160" height="50" rx="10" fill="#E8F0FE"/>
+            <text x="120" y="90" class="step">1. Recolectar Datos</text>
+            <path d="M200 85H280" class="arrow" marker-end="url(#arr)"/>
+            <rect x="280" y="60" width="160" height="50" rx="10" fill="#E6F4EA"/>
+            <text x="360" y="90" class="step">2. Predecir y Evaluar</text>
+            <path d="M440 85H520" class="arrow" marker-end="url(#arr)"/>
+            <rect x="520" y="60" width="160" height="50" rx="10" fill="#FEF7E0"/>
+            <text x="600" y="90" class="step">3. Actualizar con Recompensa</text>
+        </svg>
+        <p class="text-center text-sm mt-2">El bucle se repite hasta que el modelo se alinea con las expectativas humanas.</p>
+    </div>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">5.6 Caso de Negocio: Búsqueda Semántica Corporativa</h2>
+    <p class="mb-4">Una empresa de consultoría crea un motor de búsqueda con embeddings para localizar rápidamente informes internos y contratos relevantes.</p>
+    <div class="visualization">
+        <h4 class="text-xl font-bold text-center mb-4">Diagrama de Indexación</h4>
+        <svg width="100%" height="150" viewBox="0 0 600 150">
+            <style>.box{fill:#E8F0FE;stroke:#1A73E8;} .arrow{stroke:#5f6368;stroke-width:2;marker-end:url(#ar);}</style>
+            <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <rect x="60" y="60" width="120" height="40" rx="8" class="box"/>
+            <text x="120" y="85" text-anchor="middle">Documentos</text>
+            <path d="M180 80H280" class="arrow"/>
+            <rect x="280" y="40" width="120" height="40" rx="8" class="box"/>
+            <text x="340" y="65" text-anchor="middle">Embeddings</text>
+            <path d="M340 80V110" class="arrow"/>
+            <rect x="280" y="110" width="120" height="40" rx="8" class="box"/>
+            <text x="340" y="135" text-anchor="middle">Vector DB</text>
+        </svg>
+</p>
+    </div>
+    <div class="visualization mt-8">
+        <h4 class="text-xl font-bold text-center mb-4">Diagrama Detallado</h4>
+        <svg width="100%" height="160" viewBox="0 0 600 160">
+            <style>.bcase{fill:#F1F3F4;stroke:#5f6368;} .bcarr{stroke:#1A73E8;stroke-width:2;marker-end:url(#bcar);}</style>
+            <defs><marker id="bcar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1A73E8"/></marker></defs>
+            <rect x="40" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="90" y="85" text-anchor="middle">Entrada</text>
+            <path d="M140 80H240" class="bcarr"/>
+            <rect x="240" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="290" y="85" text-anchor="middle">Proceso</text>
+            <path d="M340 80H440" class="bcarr"/>
+            <rect x="440" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="490" y="85" text-anchor="middle">Resultado</text>
+        </svg>
+        <p class="text-center text-sm mt-2">Flujo detallado que complementa el esquema previo.</p>
+    </div>
+</section>
+</section>
+        </div>
+    </main>
+
+    <section class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Referencias Clave</h2>
+        <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Bommasani et al. 2021 - Foundation Models</li>
+            <li>Liu et al. 2019 - RoBERTa</li>
+            <li>Bender et al. 2021 - Stochastic Parrots</li>
+        </ul>
+    </section>
+
+    <section class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Glosario Rápido</h2>
+        <table class="min-w-full text-sm text-left border-collapse">
+            <thead><tr><th class="border px-2 py-1">Sigla</th><th class="border px-2 py-1">Definición</th></tr></thead>
+            <tbody>
+                <tr><td class="border px-2 py-1">BLEU</td><td class="border px-2 py-1">Métrica de traducción automática</td></tr>
+                <tr><td class="border px-2 py-1">ROUGE</td><td class="border px-2 py-1">Métrica de resumen</td></tr>
+                <tr><td class="border px-2 py-1">BERTScore</td><td class="border px-2 py-1">Coincidencia semántica con embeddings</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="bg-gray-50 text-center py-6 text-gray-500 text-sm border-t border-gray-200 mt-12">
+        <p>Pharu Analytics 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>

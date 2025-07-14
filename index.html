@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Códice de la IA: Un Viaje de Aprendizaje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        :root {
+            --google-blue: #1A73E8;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC04;
+            --google-green: #34A853;
+            --text-dark: #202124; /* Headings, primary text */
+            --text-medium: #5f6368; /* Body text, secondary */
+            --text-light: #70757a; /* Lighter secondary text */
+            --bg-light: #f8f9fa;
+            --border-light: #dadce0;
+            --shadow-color: rgba(60, 64, 67, 0.08); /* Subtle shadow */
+            --shadow-hover: rgba(60, 64, 67, 0.15); /* Slightly more pronounced on hover */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-medium); /* Default body text color */
+            line-height: 1.5;
+            letter-spacing: 0.005em; /* Subtle adjustment for Google feel */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Google Sans', sans-serif;
+            color: var(--text-dark); /* Headings are darker */
+            line-height: 1.25;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: 0 1px 2px 0 var(--shadow-color);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px 0 var(--shadow-hover);
+            border-color: var(--google-blue); /* Blue border on hover */
+        }
+
+        /* Custom Card Graphic - Now using img tags */
+        .card-graphic-img {
+            width: 56px; /* Larger graphic */
+            height: 56px;
+            border-radius: 8px; /* Square with rounded corners */
+            margin-right: 16px; /* More spacing */
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            object-fit: cover; /* Ensure image covers the area */
+        }
+
+        .hero-section {
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent white overlay */
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--google-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #1765D9;
+        }
+
+        /* Simple fade-in animation for hero content */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold font-googlesans text-gray-800">El Códice de la IA / SkillUp </h1>
+            <a href="#" class="text-blue-600 hover:underline font-medium">Acerca de</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section w-full min-h-screen flex flex-col items-center justify-center text-center p-4">
+            <video autoplay loop muted playsinline class="hero-video-background">
+                <source src="https://pharuanalytics.com/wp-content/uploads/2023/11/Web-Pharu_box.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-video-overlay"></div>
+
+            <div class="max-w-4xl mx-auto relative z-20">
+                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter animate-fade-in">
+                    Desbloquea el Futuro de la IA con Pharu Academy SkillUp
+                </h2>
+                <p class="max-w-3xl mx-auto mt-6 text-xl text-gray-600 animate-fade-in animate-delay-100">
+                    Un viaje interactivo y exhaustivo a través del Procesamiento de Lenguaje Natural, Modelos de Lenguaje Gigantes y la creación de Agentes Inteligentes.
+                </p>
+                <div class="mt-10 animate-fade-in animate-delay-200">
+                    <a href="#chapters" class="btn-primary inline-flex items-center">
+                        Explorar los Códices
+                        <span class="material-symbols-outlined ml-2">arrow_downward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="chapters" class="container mx-auto px-6 py-16">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Nuestros Códices de Conocimiento</h3>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Card 1 -->
+                <a href="./level1_foundations_enhanced.html" class="card p-6 flex flex-col justify-between">
+                    <div class="flex items-center mb-3">
+                        <img src="https://developers.google.com/static/machine-learning/images/decision-forest_720.png?hl=es-419" alt="Decision Forest Graphic" class="card-graphic-img">
+                        <h4 class="text-xl font-googlesans font-semibold">Códice I: Fundamentos del Lenguaje</h4>
+                    </div>
+                    <p class="text-sm">La alquimia de convertir texto en vectores. Exploramos la matemática y la intuición detrás de Word2Vec, GloVe y los modelos de lenguaje estadísticos, con contenido y ejercicios avanzados.</p>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="./level1_models.html" class="card p-6 flex flex-col justify-between">
+                    <div class="flex items-center mb-3">
+                        <img src="https://developers.google.com/static/machine-learning/images/recc-sys_720.png?hl=es-419" alt="Recommendation System Graphic" class="card-graphic-img">
+                        <h4 class="text-xl font-googlesans font-semibold">Códice II: Modelos Clásicos y Memoria</h4>
+                    </div>
+                    <p class="text-sm">El amanecer de la memoria secuencial. Un análisis exhaustivo de las arquitecturas RNN, LSTM y GRU, sus mecanismos internos y sus limitaciones.</p>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="./level2_transformers.html" class="card p-6 flex flex-col justify-between">
+                    <div class="flex items-center mb-3">
+                        <img src="https://developers.google.com/static/machine-learning/images/clustering_720.png?hl=es-419" alt="Clustering Graphic" class="card-graphic-img">
+                        <h4 class="text-xl font-googlesans font-semibold">Códice III: La Revolución Transformer</h4>
+                    </div>
+                    <p class="text-sm">El Big Bang del PLN. Desglosamos el paper "Attention Is All You Need" y el mecanismo de Atención Multi-Cabeza que lo cambió todo.</p>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="./level2_ecosystem.html" class="card p-6 flex flex-col justify-between">
+                    <div class="flex items-center mb-3">
+                        <img src="https://developers.google.com/static/machine-learning/images/reinf_720.png?hl=es-419" alt="Reinforcement Learning Graphic" class="card-graphic-img">
+                        <h4 class="text-xl font-googlesans font-semibold">Códice IV: El Ecosistema de Modelos</h4>
+                    </div>
+                    <p class="text-sm">Un safari por el zoológico de los LLMs. Analizamos las familias BERT, GPT y T5, sus filosofías de diseño y sus aplicaciones ideales.</p>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="./level3_agents.html" class="card p-6 flex flex-col justify-between">
+                    <div class="flex items-center mb-3">
+                        <img src="https://developers.google.com/static/machine-learning/images/gans_720.png?hl=es-419" alt="GANs Graphic" class="card-graphic-img">
+                        <h4 class="text-xl font-googlesans font-semibold">Códice V: La Emergencia de los Agentes</h4>
+                    </div>
+                    <p class="text-sm">Más allá del lenguaje. Estudiamos los patrones de diseño de agentes (ReAct, Plan-and-Execute) y las arquitecturas para darles herramientas.</p>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="./level3_systems.html" class="card p-6 flex flex-col justify-between">
+                    <div class="flex items-center mb-3">
+                        <img src="https://developers.google.com/static/machine-learning/images/img-clsf_720.png?hl=es-419" alt="Image Classification Graphic" class="card-graphic-img">
+                        <h4 class="text-xl font-googlesans font-semibold">Códice VI: Sistemas y Alineamiento</h4>
+                    </div>
+                    <p class="text-sm">La ingeniería del mundo real. Una inmersión en RAG, RLHF, evaluación, seguridad y los desafíos éticos de construir sistemas de IA robustos.</p>
+                </a>
+
+
+            </div>
+        </section>
+
+        <section id="instructors" class="container mx-auto px-6 py-16">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Nuestros Instructores</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8 text-center flex flex-col items-center space-y-4 hover:shadow-lg hover:-translate-y-1 transition">
+                    <img src="https://pharuanalytics.com/wp-content/uploads/2025/03/Integrantes-1.png" alt="Francisco Vidal Ureta" class="w-40 h-40 rounded-full object-cover object-top ring-2 ring-gray-200 shadow mb-2">
+                    <h4 class="text-xl font-googlesans font-semibold">Francisco Vidal Ureta</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-600 text-left">
+                        <li>Ingeniero Comercial, Universidad de Valparaíso.</li>
+                        <li>Diplomado en Finanzas, Universidad de Chile.</li>
+                        <li>Diplomado en Big Data &amp; Data Science. Pontificia Universidad Católica de Valparaíso.</li>
+                        <li>Applied Data Science Program, University of Michigan.</li>
+                        <li>Magister en Economía, Universidad de Chile.</li>
+                        <li>Magister en Inteligencia Artificial, Universidad Adolfo Ibáñez.</li>
+                    </ul>
+                </div>
+                <div class="card p-8 text-center flex flex-col items-center space-y-4 hover:shadow-lg hover:-translate-y-1 transition">
+                    <img src="https://pharuanalytics.com/wp-content/uploads/2024/02/Manuel_web.jpg" alt="Manuel Bozo Sáez" class="w-40 h-40 rounded-full object-cover object-top ring-2 ring-gray-200 shadow mb-2">
+                    <h4 class="text-xl font-googlesans font-semibold">Manuel Bozo Sáez</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-600 text-left">
+                        <li>Ingeniero en Información y Control de Gestión, Universidad de Chile.</li>
+                        <li>Professional Education, Massachusetts Institute of Technology.</li>
+                        <li>Exponential Learning, IE Business School.</li>
+                        <li>UN CC: e-Learn, United Nations Institute for Training and Research.</li>
+                    </ul>
+                </div>
+                <div class="card p-8 text-center flex flex-col items-center space-y-4 hover:shadow-lg hover:-translate-y-1 transition">
+                    <img src="https://pharuanalytics.com/wp-content/uploads/2025/07/Foto_4.png" alt="Vicente Wohl Valderrama" class="w-40 h-40 rounded-full object-cover object-top ring-2 ring-gray-200 shadow mb-2">
+                    <h4 class="text-xl font-googlesans font-semibold">Vicente Wohl Valderrama</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-600 text-left">
+                        <li>Ingeniero Civil Industrial con mención Financiera, Universidad de los Andes.</li>
+                        <li>Diplomado en Ciencia de Datos para la Gestión, Pontificia Universidad Católica de Chile</li>
+                        <li>Certificado profesional de Machine Learning Engineer, Google Cloud.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-50 text-center py-8 text-gray-500 text-sm border-t border-gray-200">
+        <p>&copy; 2025 - El Códice de la IA. Pharu Academy.</p>
+    </footer>
+
+</body>
+</html>

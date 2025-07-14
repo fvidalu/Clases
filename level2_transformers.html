@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Códice III: La Revolución Transformer [Edición Definitiva] - El Códice de la IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        :root {
+            --blue-100: #e8f0fe; --blue-500: #1a73e8; --blue-700: #174ea6;
+            --red-100: #fce8e6; --red-500: #ea4335; --red-700: #c5221f;
+            --yellow-100: #fef7e0; --yellow-500: #fbbc04; --yellow-700: #f29900;
+            --green-100: #e6f4ea; --green-500: #34a853; --green-700: #1e8e3e;
+            --purple-100: #f3e8fd; --purple-500: #9333ea; --purple-700: #6b21a8;
+            --gray-900: #202124; --gray-800: #3c4043; --gray-700: #5f6368; --gray-200: #e8eaed; --gray-100: #f1f3f4; --gray-50: #f8f9fa;
+            --bg-color: #fff; --text-color: var(--gray-800);
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes draw-line { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.75; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Google Sans', sans-serif; color: var(--gray-900); letter-spacing: -0.02em; }
+        .content-section { animation: fadeIn 0.8s ease-out forwards; border-bottom: 1px solid var(--gray-200); padding-bottom: 4rem; margin-bottom: 4rem; }
+        .content-section:last-child { border-bottom: none; }
+        .concept-box { background-color: var(--gray-50); border: 1px solid var(--gray-200); border-left: 4px solid var(--blue-500); padding: 24px; border-radius: 8px; margin: 2rem 0; }
+        .deep-dive-box { background-color: var(--yellow-100); border: 1px solid var(--yellow-500); border-left: 4px solid var(--yellow-700); padding: 24px; border-radius: 8px; margin: 2rem 0; }
+        .business-case-box { background-color: var(--green-100); border: 1px solid var(--green-500); border-left: 4px solid var(--green-700); padding: 24px; border-radius: 8px; margin: 2rem 0; }
+        .visualization { background: linear-gradient(145deg, #ffffff, #f7f8fa); border: 1px solid var(--gray-200); border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
+        .visualization > svg,
+        .visualization > img,
+        .visualization > iframe {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .code-block { background-color: #202124; color: #e8eaed; border-radius: 8px; padding: 16px; margin: 1rem 0; overflow-x: auto; font-family: 'Roboto Mono', monospace; font-size: 0.9em; }
+        .formula-box { background-color: var(--blue-100); border: 1px solid var(--blue-500); color: var(--gray-900); padding: 1.5rem; margin: 1rem 0; border-radius: 8px; text-align: center; font-family: 'Roboto Mono', monospace; font-size: 1.1em; }
+        .wow-animation-card { background: radial-gradient(circle, rgba(26,115,232,0.1) 0%, rgba(255,255,255,0) 70%); border: 1px solid var(--blue-200); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold font-googlesans text-gray-800 hover:text-blue-500 transition-colors">El Códice de la IA</a>
+            <a href="index.html#chapters" class="text-blue-500 hover:underline font-medium">Volver a los Códices</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 pt-24">
+
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Códice III: La Revolución Transformer</h1>
+            <p class="text-xl text-gray-600 mb-12">El Big Bang del PLN. Desglosamos el paper "Attention Is All You Need" y el mecanismo de Atención Multi-Cabeza que lo cambió todo.</p>
+
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">Objetivos del Códice III</h2>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Entender las limitaciones de las RNNs y el salto al paralelismo.</li>
+                    <li>Dominar el mecanismo de auto-atención y la arquitectura Transformer.</li>
+                    <li>Aplicar modelos como BERT y GPT mediante fine-tuning.</li>
+                </ul>
+                <p class="mt-4">A lo largo de este códice utilizaremos diagramas y ejemplos reales para ilustrar cada paso.</p>
+            </section>
+
+            <!-- Section 1: The Problem & The Solution -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">1. El Salto al Paralelismo</h2>
+                <p class="mb-4">Las RNNs son lentas porque procesan palabra por palabra. El Transformer rompe esta barrera procesando todas las palabras a la vez mediante un ingenioso mecanismo llamado <strong>Auto-Atención</strong>.</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">LSTM vs. Transformer: El Salto al Paralelismo</h4>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="p-4 border rounded-lg text-center">
+                            <h3 class="font-bold mb-2">LSTM: Procesamiento Secuencial</h3>
+                            <svg width="100%" height="auto" style="max-width:200px" viewBox="0 0 200 150"><style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;}</style><defs><marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/></marker></defs><g><rect x="60" y="10" width="80" height="30" rx="5" fill="#F1F3F4"/><text x="100" y="30" class="label">Paso 1</text></g><path d="M 100 40 V 60" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/><g><rect x="60" y="60" width="80" height="30" rx="5" fill="#F1F3F4"/><text x="100" y="80" class="label">Paso 2</text></g><path d="M 100 90 V 110" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/><g><rect x="60" y="110" width="80" height="30" rx="5" fill="#F1F3F4"/><text x="100" y="130" class="label">Paso 3</text></g></svg>
+                            <p class="text-sm mt-2 text-red-600">Lento, un paso a la vez.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg text-center">
+                            <h3 class="font-bold mb-2">Transformer: Procesamiento Paralelo</h3>
+                            <svg width="100%" height="auto" style="max-width:200px" viewBox="0 0 200 150"><style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;}</style><defs><marker id="arrow-flow-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34A853"/></marker></defs><g><rect x="10" y="60" width="80" height="30" rx="5" fill="#E6F4EA"/><text x="50" y="80" class="label">Palabra 1</text></g><g><rect x="110" y="60" width="80" height="30" rx="5" fill="#E6F4EA"/><text x="150" y="80" class="label">Palabra 2</text></g><g><rect x="60" y="110" width="80" height="30" rx="5" fill="#E6F4EA"/><text x="100" y="130" class="label">Palabra 3</text></g><path d="M 50 60 L 100 20" stroke="#34A853" stroke-width="2" marker-end="url(#arrow-flow-p)"/><path d="M 150 60 L 100 20" stroke="#34A853" stroke-width="2" marker-end="url(#arrow-flow-p)"/><path d="M 100 110 L 100 20" stroke="#34A853" stroke-width="2" marker-end="url(#arrow-flow-p)"/></svg>
+                            <p class="text-sm mt-2 text-green-600">¡Masivamente paralelo!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: The Encoder -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">2. El Encoder: Entendiendo el Contexto Profundo</h2>
+                <p class="mb-4">La misión del Encoder es leer una secuencia de texto y construir una representación numérica rica y contextual para cada palabra. Es como un lector sobrehumano que no solo entiende las palabras, sino también las complejas relaciones que existen entre ellas. Lo hace apilando múltiples bloques idénticos, cada uno con dos superpoderes: la Auto-Atención Multi-Cabeza y una Red Feed-Forward.</p>
+                
+                <h3 class="text-2xl font-bold mt-8 mb-4">2.1. El Corazón del Transformer: Auto-Atención a Escala</h3>
+                <p class="mb-4">La Auto-Atención (Self-Attention) es el mecanismo que permite a cada palabra "mirar" a todas las demás palabras de la secuencia para entender mejor su propio significado. Para lograrlo, proyecta el vector de cada palabra en tres roles distintos, que se aprenden durante el entrenamiento:</p>
+                
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Analogía de la Biblioteca: Query, Key y Value</h4>
+                    <p>Imagina que estás en una biblioteca y quieres encontrar información sobre "IA".</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2 mt-2">
+                        <li>Tu pregunta, "IA", es la <b>Query</b>.</li>
+                        <li>Cada libro de la biblioteca tiene una etiqueta en el lomo que resume su contenido (ej. "Redes Neuronales", "Algoritmos Genéticos"). Estas etiquetas son las <b>Keys</b>.</li>
+                        <li>El contenido real de cada libro es el <b>Value</b>.</li>
+                    </ul>
+                    <p class="mt-2">El proceso de atención consiste en comparar tu Query ("IA") con todas las Keys (etiquetas) de la biblioteca. Si una etiqueta es muy similar a tu pregunta (como "Redes Neuronales"), le das una puntuación alta. Luego, tomas el contenido (el Value) de cada libro y lo ponderas por esa puntuación. El resultado es una síntesis de la información más relevante de toda la biblioteca para tu pregunta específica.</p>
+                </div>
+
+                <div class="formula-box">
+                    Attention(Q, K, V) = softmax( (Q * K^T) / sqrt(d_k) ) * V
+                </div>
+                <p class="text-center text-sm mt-2">La famosa fórmula de la atención. El producto punto <code>Q * K^T</code> calcula la similitud entre cada Query y cada Key. El <code>softmax</code> convierte esas puntuaciones en probabilidades (pesos de atención). Finalmente, estos pesos se multiplican por los Values para obtener una representación ponderada.</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">Calculando los Pesos de Atención</h4>
+                    <svg width="100%" height="auto" style="max-width:500px" viewBox="0 0 800 300">
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;} .matrix-label{font-family: 'Roboto Mono', sans-serif; text-anchor: middle;}</style>
+                        <!-- Q Matrix -->
+                        <g>
+                            <rect x="50" y="100" width="100" height="100" fill="#E8F0FE" stroke="#1A73E8"/>
+                            <text x="100" y="155" class="label">Q</text>
+                        </g>
+                        <!-- K^T Matrix -->
+                        <g>
+                            <rect x="200" y="100" width="100" height="100" fill="#E6F4EA" stroke="#34A853"/>
+                            <text x="250" y="155" class="label">K^T</text>
+                        </g>
+                        <!-- Result Matrix -->
+                        <g>
+                            <rect x="450" y="100" width="100" height="100" fill="#FEF7E0" stroke="#FBBC04"/>
+                            <text x="500" y="155" class="label">Scores</text>
+                        </g>
+                        <text x="150" y="155" class="label" font-size="24px">×</text>
+                        <text x="375" y="155" class="label" font-size="24px">=</text>
+                        <path d="M 550 150 H 650" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <g>
+                            <rect x="650" y="125" width="100" height="50" rx="5" fill="#FCE8E6" stroke="#EA4335"/>
+                            <text x="700" y="155" class="label">Softmax</text>
+                        </g>
+                    </svg>
+                    <p class="text-center text-sm mt-2">La matriz de Queries se multiplica por la transpuesta de la matriz de Keys para obtener una matriz de puntuaciones de similitud.</p>
+                </div>
+
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Visualización Interactiva de la Atención</h4>
+                    <p class="text-center text-sm mb-4">Escribe una frase y observa cómo cada palabra "presta atención" a las demás.</p>
+                    <div class="flex flex-col items-center">
+                        <div class="w-full max-w-2xl bg-gray-100 p-4 rounded-lg border border-gray-200">
+                            <label for="attention-input" class="block text-sm font-medium text-gray-700 mb-2">Introduce una frase:</label>
+                            <input type="text" id="attention-input" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2" value="El perro persigue al gato.">
+                            <div id="attention-heatmap" class="mt-4"></div>
+                        </div>
+                        <script>
+                            function generateAttentionHeatmap(sentence) {
+                                const words = sentence.split(' ');
+                                let heatmapHtml = '<div class="overflow-x-auto">';
+                                heatmapHtml += '<table class="min-w-full divide-y divide-gray-200">';
+                                heatmapHtml += '<thead class="bg-gray-50"><tr><th></th>';
+                                words.forEach(word => {
+                                    heatmapHtml += `<th class="px-2 py-1 text-xs font-medium text-gray-500 uppercase tracking-wider">${word}</th>`;
+                                });
+                                heatmapHtml += '</tr></thead><tbody class="bg-white divide-y divide-gray-200">';
+
+                                words.forEach((rowWord, rowIndex) => {
+                                    heatmapHtml += `<tr><td class="px-2 py-1 whitespace-nowrap text-sm font-medium text-gray-900">${rowWord}</td>`;
+                                    words.forEach((colWord, colIndex) => {
+                                        // Simulate attention weights (random for demonstration)
+                                        const attention = Math.random();
+                                        const bgColor = `rgba(26, 115, 232, ${attention})`; // Blue color with varying opacity
+                                        heatmapHtml += `<td class="px-2 py-1 whitespace-nowrap text-sm text-gray-500 text-center" style="background-color: ${bgColor};">${attention.toFixed(2)}</td>`;
+                                    });
+                                    heatmapHtml += '</tr>';
+                                });
+                                heatmapHtml += '</tbody></table></div>';
+                                document.getElementById('attention-heatmap').innerHTML = heatmapHtml;
+                            }
+
+                            document.getElementById('attention-input').addEventListener('input', function() {
+                                generateAttentionHeatmap(this.value);
+                            });
+
+                            generateAttentionHeatmap(document.getElementById('attention-input').value); // Initial heatmap
+                        </script>
+                    </div>
+                </div>
+
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Esquema Explicativo: Arquitectura del Transformer</h4>
+                    <p class="text-center text-sm mb-4">Este esquema muestra los componentes principales de la arquitectura del Transformer y cómo interactúan entre sí.</p>
+                    <div id="transformer-schema"></div>
+                    <script>
+                        let schemaHtml = '<svg width="100%" height="400" viewBox="0 0 800 400">';
+                        schemaHtml += '<defs><marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/></marker></defs>';
+                        schemaHtml += '<g transform="translate(50,50)">';
+
+                        // Nodos
+                        schemaHtml += '<rect x="0" y="150" width="150" height="80" rx="10" fill="#E8F0FE" stroke="#1A73E8"/><text x="75" y="195" text-anchor="middle">Encoder</text>';
+                        schemaHtml += '<rect x="250" y="150" width="150" height="80" rx="10" fill="#E6F4EA" stroke="#34A853"/><text x="325" y="195" text-anchor="middle">Decoder</text>';
+                        schemaHtml += '<rect x="500" y="150" width="150" height="80" rx="10" fill="#FEF7E0" stroke="#FBBC04"/><text x="575" y="195" text-anchor="middle">Salida</text>';
+
+                        // Enlaces
+                        schemaHtml += '<path d="M150 190 L 250 190" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>';
+                        schemaHtml += '<path d="M400 190 L 500 190" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>';
+
+                        schemaHtml += '</g></svg>';
+                        document.getElementById('transformer-schema').innerHTML = schemaHtml;
+                    </script>
+                </div>
+
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Ondas de Codificación Posicional</h4>
+                    <svg id="positional-waves" width="100%" height="200" viewBox="0 0 800 200">
+                        <style>.wave{fill:none;stroke-width:2;} .axis{stroke:#5f6368;}</style>
+                        <line x1="50" y1="100" x2="750" y2="100" class="axis"/>
+                    </svg>
+                    <script>
+                        function drawWaves(){
+                            const svg=document.getElementById('positional-waves');
+                            ['#1A73E8','#EA4335','#FBBC04'].forEach((color,idx)=>{
+                                const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+                                let d='M50 100 ';
+                                for(let x=50;x<=750;x+=10){
+                                    const y=100+Math.sin((x/50)+idx)*40/(idx+1);
+                                    d+=`L${x} ${y} `;
+                                }
+                                path.setAttribute('d',d);
+                                path.setAttribute('class','wave');
+                                path.setAttribute('stroke',color);
+                                svg.appendChild(path);
+                            });
+                        }
+                        drawWaves();
+                    </script>
+                    <p class="text-center text-sm mt-2">Las posiciones se codifican con ondas senoidales de distintas frecuencias.</p>
+                </div>
+
+            <!-- Section 3: The Decoder -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">3. El Decoder: Generando el Texto</h2>
+                <p class="mb-4">La misión del Decoder es tomar la representación contextual del Encoder y generar una secuencia de texto palabra por palabra.</p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">3.1. Auto-Atención Enmascarada (Masked Self-Attention)</h3>
+                <p>El Decoder también usa auto-atención, pero con una diferencia crucial: debe ser <strong>auto-regresivo</strong>. Al predecir la palabra en la posición `i`, no puede ver las palabras futuras (`i+1`, `i+2`, etc.). Esto se logra con una "máscara" que pone a cero las puntuaciones de atención de las palabras futuras.</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">Animación de la Atención Enmascarada</h4>
+                    <p class="text-center mb-4">Al calcular la atención para la palabra "gato", la máscara impide que vea la palabra "negro".</p>
+                    <svg width="100%" height="auto" style="max-width:500px" viewBox="0 0 800 250">
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle;} .token{font-family: 'Roboto Mono', sans-serif; text-anchor: middle;}</style>
+                        <text x="400" y="40" class="label">Calculando atención para "gato"</text>
+                        <!-- Tokens -->
+                        <g><rect x="50" y="100" width="100" height="50" rx="5" fill="#E6F4EA"/><text x="100" y="130" class="token">el</text></g>
+                        <g><rect x="200" y="100" width="100" height="50" rx="5" fill="#E6F4EA"/><text x="250" y="130" class="token">gato</text></g>
+                        <g><rect x="350" y="100" width="100" height="50" rx="5" fill="#E6F4EA"/><text x="400" y="130" class="token">negro</text></g>
+                        <!-- Attention Arrows -->
+                        <path d="M 250 100 C 200 50, 100 50, 100 100" stroke="#1A73E8" stroke-width="2" fill="none" marker-end="url(#arrow-flow)"/>
+                        <path d="M 250 100 C 250 70, 250 70, 250 100" stroke="#1A73E8" stroke-width="2" fill="none" marker-end="url(#arrow-flow)"/>
+                        <!-- Mask -->
+                        <path d="M 250 100 C 300 50, 400 50, 400 100" stroke="#DADCE0" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+                        <line x1="400" y1="80" x2="420" y2="60" stroke="#EA4335" stroke-width="4"/>
+                        <line x1="420" y1="80" x2="400" y2="60" stroke="#EA4335" stroke-width="4"/>
+                        <text x="500" y="70" class="label" fill="#C5221F">¡Prohibido mirar!</text>
+                    </svg>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">3.2. Atención Encoder-Decoder</h3>
+                <p>Aquí es donde las dos mitades del Transformer se unen. Después de la auto-atención enmascarada, el Decoder tiene una segunda capa de atención. Pero en lugar de compararse consigo mismo, sus vectores Query prestan atención a los vectores Key y Value de la <strong>salida final del Encoder</strong>. Así es como el Decoder sabe sobre qué debe generar texto.</p>
+            </section>
+
+            <!-- Section 4: The Full Architecture -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">4. La Arquitectura Completa del Transformer</h2>
+                <p class="mb-4">Ahora podemos ensamblar todas las piezas en el diagrama maestro, tal como se presentó en el paper original "Attention Is All You Need".</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">Diagrama Maestro del Transformer</h4>
+                        <style>.label{font-family: 'Google Sans', sans-serif; font-weight: bold; text-anchor: middle; font-size: 14px;} .desc{font-family: 'Roboto', sans-serif; text-anchor: middle; font-size: 12px;}</style>
+                        <!-- Encoder Stack -->
+                        <g transform="translate(150, 300)">
+                            <rect x="-100" y="-200" width="200" height="400" rx="10" fill="#F1F3F4" stroke="#DADCE0"/>
+                            <text y="-175" class="label">Encoder (Nx)</text>
+                            <rect x="-80" y="-150" width="160" height="100" rx="5" fill="white"/><text y="-100" class="label">Multi-Head Attention</text>
+                            <rect x="-80" y="0" width="160" height="100" rx="5" fill="white"/><text y="50" class="label">Feed Forward</text>
+                            <text y="-220" class="label">Inputs</text><path d="M 0 -250 V -200" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        </g>
+                        <!-- Decoder Stack -->
+                        <g transform="translate(550, 300)">
+                            <rect x="-100" y="-200" width="200" height="400" rx="10" fill="#F1F3F4" stroke="#DADCE0"/>
+                            <text y="-175" class="label">Decoder (Nx)</text>
+                            <rect x="-80" y="-150" width="160" height="80" rx="5" fill="white"/><text y="-110" class="label">Masked Multi-Head</text>
+                            <rect x="-80" y="-50" width="160" height="80" rx="5" fill="white"/><text y="-10" class="label">Multi-Head Attention</text>
+                            <rect x="-80" y="50" width="160" height="80" rx="5" fill="white"/><text y="90" class="label">Feed Forward</text>
+                            <text y="-220" class="label">Outputs (Shifted Right)</text><path d="M 0 -250 V -200" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        </g>
+                        <!-- Connection -->
+                        <path d="M 250 300 H 470" stroke="#1A73E8" stroke-width="3" marker-end="url(#arrow-flow)"/>
+                        <path d="M 470 300 V 200" stroke="#1A73E8" stroke-width="3"/>
+                        <path d="M 470 200 H 470" stroke="#1A73E8" stroke-width="3"/>
+                        <!-- Final Layer -->
+                        <path d="M 550 500 V 540" stroke="#5f6368" stroke-width="2" marker-end="url(#arrow-flow)"/>
+                        <g><rect x="450" y="540" width="200" height="40" rx="5" fill="#E6F4EA"/><text x="550" y="565" class="label">Linear + Softmax</text></g>
+                    </svg>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-12 mb-4">4.1 Aplicaciones de Negocio: Más Allá de la Traducción</h3>
+                <p class="mb-4">La arquitectura Transformer, con su capacidad para manejar dependencias a largo plazo y procesar secuencias en paralelo, ha revolucionado no solo la traducción automática, sino una multitud de aplicaciones empresariales.</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="p-6 bg-blue-100 rounded-lg border border-blue-200">
+                        <h4 class="text-xl font-bold mb-3">Generación de Contenido Automatizada</h4>
+                        <p class="mb-2"><strong>El Problema:</strong> Una empresa de marketing digital necesita producir miles de descripciones de productos, artículos de blog o publicaciones para redes sociales de forma rápida y a gran escala, manteniendo la coherencia y la calidad.</p>
+                        <p><strong>La Solución:</strong> Un Transformer (como un modelo GPT fine-tuneado) puede generar contenido original y relevante a partir de unas pocas palabras clave o un breve resumen. Esto acelera drásticamente la creación de contenido, reduce los costos y permite a los equipos de marketing centrarse en la estrategia y la creatividad.</p>
+                    </div>
+                    <div class="p-6 bg-green-100 rounded-lg border border-green-200">
+                        <h4 class="text-xl font-bold mb-3">Resumen Automático de Documentos Extensos</h4>
+                        <p class="mb-2"><strong>El Problema:</strong> Abogados, analistas financieros o investigadores necesitan extraer rápidamente la información clave de documentos muy extensos (contratos, informes, artículos científicos) sin tener que leerlos por completo.</p>
+                        <p><strong>La Solución:</strong> Un Transformer (como un modelo T5 o BART) puede leer un documento largo y generar un resumen conciso y coherente que capture los puntos más importantes. Esto ahorra incontables horas de trabajo manual, mejora la eficiencia en la toma de decisiones y permite procesar un volumen de información mucho mayor.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4.2: Fine-Tuning -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">4.2 Fine-Tuning y Transferencia</h2>
+                <p class="mb-4">Tras entrenar un Transformer a gran escala, es posible adaptarlo a tareas específicas con unas pocas muestras. Este proceso de <strong>fine-tuning</strong> ha permitido que modelos como BERT y GPT resuelvan clasificación, QA o NER con resultados de vanguardia.</p>
+                <div class="visualization">
+                    <h4 class="text-xl font-bold text-center mb-4">Esquema de Fine-Tuning</h4>
+                    <svg width="100%" height="130" viewBox="0 0 500 130">
+                        <rect x="20" y="40" width="150" height="50" rx="10" fill="#E8F0FE" stroke="#1A73E8"/>
+                        <text x="95" y="70" text-anchor="middle" font-family="Google Sans" font-size="14">Modelo Preentrenado</text>
+                        <path d="M170 65 H 330" stroke="#5f6368" marker-end="url(#arrow-flow)"/>
+                        <rect x="330" y="40" width="150" height="50" rx="10" fill="#E6F4EA" stroke="#34A853"/>
+                        <text x="405" y="70" text-anchor="middle" font-family="Google Sans" font-size="14">Modelo Ajustado</text>
+                    </svg>
+                    <div class="mt-4"></div>
+                    <svg width="100%" height="160" viewBox="0 0 700 160">
+                        <style>.ft-box{fill:#F1F3F4;stroke:#5f6368;} .ft-arrow{stroke:#5f6368;stroke-width:2;marker-end:url(#arrow-flow);}</style>
+                        <rect x="20" y="60" width="120" height="40" rx="8" class="ft-box"/>
+                        <text x="80" y="85" text-anchor="middle">Dataset</text>
+                        <path d="M140 80H260" class="ft-arrow"/>
+                        <rect x="260" y="60" width="120" height="40" rx="8" class="ft-box"/>
+                        <text x="320" y="85" text-anchor="middle">Fine-Tuning</text>
+                        <path d="M380 80H500" class="ft-arrow"/>
+                        <rect x="500" y="60" width="120" height="40" rx="8" class="ft-box"/>
+                        <text x="560" y="85" text-anchor="middle">Modelo Final</text>
+                    </svg>
+                </div>
+            </section>
+            <!-- Section 4.3: Visualización Interactiva de Atención -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">4.3 Mapa de Atención Interactivo</h2>
+                <p class="mb-4">El mecanismo de atención puede visualizarse como un mapa de calor. Pasa el cursor por cada palabra para ver cómo cambia el foco del modelo.</p>
+                <div class="visualization">
+                    <p class="text-center text-sm mb-2">"El aprendizaje profundo transformó el procesamiento de lenguaje"</p>
+                    <svg id="heat-attention" width="100%" height="160" viewBox="0 0 700 160">
+                        <style>.token{font-family:Roboto Mono;font-size:13px;text-anchor:middle;} .heat{fill:#FBBC04;fill-opacity:0.2;}</style>
+                        <g id="heat-tokens" transform="translate(50,120)"></g>
+                    </svg>
+                    <script>
+                        const wordsHeat=['El','aprendizaje','profundo','transformó','el','procesamiento','de','lenguaje'];
+                        const groupHeat=document.getElementById('heat-tokens');
+                        wordsHeat.forEach((w,i)=>{
+                            const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+                            rect.setAttribute('x',i*80-30);rect.setAttribute('y',-20);
+                            rect.setAttribute('width',60);rect.setAttribute('height',40);
+                            rect.setAttribute('class','heat');
+                            rect.style.opacity=0.4;groupHeat.appendChild(rect);
+                            const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+                            t.setAttribute('x',i*80);t.setAttribute('y',0);t.setAttribute('class','token');t.textContent=w;groupHeat.appendChild(t);
+                            t.addEventListener('mouseenter',()=>{groupHeat.querySelectorAll('.heat').forEach(h=>h.style.opacity=0.4);rect.style.opacity=0.9;});
+                        });
+                    </script>
+                </div>
+            </section>
+            <!-- Section 5: Summary -->
+            <section class="content-section">
+                <h2 class="text-3xl font-bold mb-6">Resumen del Códice III: La Arquitectura que lo Cambió Todo</h2>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">3.5 Animación de Positional Encoding</h2>
+    <p class="mb-4">El encoding posicional permite que el Transformer entienda el orden de las palabras sin usar recurrencia. Observa cómo las funciones seno y coseno generan patrones únicos.</p>
+    <div class="visualization">
+        <svg width="100%" height="200" viewBox="0 0 800 200">
+            <style>.axis{stroke:#5f6368;stroke-width:1;} .signal{fill:none;stroke:#1A73E8;stroke-width:2;}</style>
+            <line x1="50" y1="100" x2="750" y2="100" class="axis"/>
+            <line x1="50" y1="20" x2="50" y2="180" class="axis"/>
+            <path id="pos-wave" class="signal" d=""/>
+            <script>
+                const path = document.getElementById('pos-wave');
+                const points = [];
+                for (let x = 0; x <= 700; x+=10) {
+                    const y = 50*Math.sin((x/700)*10) + 100;
+                    points.push(`${50+x},${y}`);
+                }
+                path.setAttribute('d','M'+points.join(' L'));
+            </script>
+        </svg>
+    </div>
+</section>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">6. Caso de Negocio: Resumen Financiero Automatizado</h2>
+    <p class="mb-4">Instituciones analizan reportes extensos con Transformers para generar resúmenes ejecutivos en segundos.</p>
+    <div class="visualization">
+        <h4 class="text-xl font-bold text-center mb-4">Cadena de Procesamiento</h4>
+        <svg style="max-width:500px" width="100%" height="140" viewBox="0 0 600 140">
+            <style>.blk{fill:#E8F0FE;stroke:#1A73E8;} .arr{stroke:#5f6368;stroke-width:2;marker-end:url(#sarr);}</style>
+            <defs><marker id="sarr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <rect x="30" y="50" width="120" height="40" rx="8" class="blk"/>
+            <text x="90" y="75" text-anchor="middle">Reporte</text>
+            <path d="M150 70H270" class="arr"/>
+            <rect x="270" y="50" width="120" height="40" rx="8" class="blk"/>
+            <text x="330" y="75" text-anchor="middle">Transformer</text>
+            <path d="M390 70H510" class="arr"/>
+            <rect x="510" y="50" width="120" height="40" rx="8" class="blk"/>
+            <text x="570" y="75" text-anchor="middle">Resumen</text>
+        </svg>
+        <p class="text-center text-sm mt-2">El modelo identifica los puntos clave y entrega un informe condensado.</p>
+    </div>
+    <div class="visualization mt-8">
+        <h4 class="text-xl font-bold text-center mb-4">Diagrama Detallado</h4>
+        <svg width="100%" height="160" viewBox="0 0 600 160">
+            <style>.bcase{fill:#F1F3F4;stroke:#5f6368;} .bcarr{stroke:#1A73E8;stroke-width:2;marker-end:url(#bcar);}</style>
+            <defs><marker id="bcar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1A73E8"/></marker></defs>
+            <rect x="40" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="90" y="85" text-anchor="middle">Entrada</text>
+            <path d="M140 80H240" class="bcarr"/>
+            <rect x="240" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="290" y="85" text-anchor="middle">Proceso</text>
+            <path d="M340 80H440" class="bcarr"/>
+            <rect x="440" y="60" width="100" height="40" rx="8" class="bcase"/>
+            <text x="490" y="85" text-anchor="middle">Resultado</text>
+        </svg>
+        <p class="text-center text-sm mt-2">Flujo detallado que complementa el esquema previo.</p>
+    </div>
+</section>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">3.6 Explorador de Cabezas de Atención</h2>
+    <p class="mb-4">Selecciona una cabeza para ver cómo decide la importancia de cada palabra en la frase "El gato negro se subió al árbol".</p>
+    <div class="visualization">
+        <div class="flex space-x-2 mb-4">
+            <button class="head-btn px-3 py-1 bg-blue-500 text-white rounded" data-head="1">Cabeza 1</button>
+            <button class="head-btn px-3 py-1 bg-blue-500 text-white rounded" data-head="2">Cabeza 2</button>
+            <button class="head-btn px-3 py-1 bg-blue-500 text-white rounded" data-head="3">Cabeza 3</button>
+        </div>
+        <svg style="max-width:500px" id="attention-vis" width="100%" height="160" viewBox="0 0 600 160">
+            <style>.word{font-family:Roboto;font-size:12px;text-anchor:middle;} .att-line{stroke:#34A853;stroke-width:2;opacity:0.5;}</style>
+            <g id="words" transform="translate(50,120)"></g>
+        </svg>
+        <script>
+            const words = ['El','gato','negro','se','subió','al','árbol'];
+            const wordGroup = document.getElementById('words');
+            words.forEach((w,i)=>{
+                const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+                text.setAttribute('x',i*80);
+                text.setAttribute('y',0);
+                text.setAttribute('class','word');
+                text.textContent = w;
+                wordGroup.appendChild(text);
+            });
+            function renderHead(h){
+                const svg = document.getElementById('attention-vis');
+                const existing = svg.querySelectorAll('.att-line');
+                existing.forEach(e=>e.remove());
+                for(let i=0;i<words.length;i++){
+                    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+                    line.setAttribute('x1',i*80+50);
+                    line.setAttribute('y1','20');
+                    line.setAttribute('x2',h*80+50);
+                    line.setAttribute('y2','-40');
+                    line.setAttribute('class','att-line');
+                    svg.appendChild(line);
+                }
+            }
+            document.querySelectorAll('.head-btn').forEach(btn=>{
+                btn.addEventListener('click',()=>{renderHead(parseInt(btn.dataset.head));});
+            });
+            renderHead(1);
+        </script>
+    </div>
+</section>
+                <p class="mb-4">Has llegado al final de la construcción. Has ensamblado, pieza por pieza, la arquitectura que ha impulsado los avances más significativos en la historia de la inteligencia artificial. Ya no es una caja negra.</p>
+                <div class="concept-box">
+                    <h4 class="text-lg font-semibold mb-2 text-dark">Conceptos Clave Dominados:</h4>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>El <strong>salto al paralelismo</strong> y por qué las RNNs se convirtieron en un cuello de botella.</li>
+                        <li>El mecanismo de <strong>Auto-Atención</strong>, con sus vectores Query, Key y Value, como el corazón del Transformer.</li>
+                        <li>La potencia de la <strong>Atención Multi-Cabeza</strong> para aprender diversas relaciones simultáneamente.</li>
+                        <li>La ingeniosa solución de la <strong>Codificación Posicional</strong> para reintroducir el orden de las palabras.</li>
+                        <li>La función del <strong>Encoder</strong>: crear representaciones ricas en contexto.</li>
+                        <li>La función del <strong>Decoder</strong>: generar texto de forma auto-regresiva usando <strong>Atención Enmascarada</strong>.</li>
+                        <li>La danza de la <strong>Atención Encoder-Decoder</strong>, que une ambas mitades.</li>
+                        <li>Las <strong>Aplicaciones de Negocio</strong> que demuestran el valor práctico de esta arquitectura en la generación de contenido y resumen automático.</li>
+                    </ul>
+                </div>
+                <div class="visualization mt-8">
+                    <h4 class="text-xl font-bold text-center mb-4">Capas Clave del Transformer</h4>
+                    <svg width="100%" height="150" viewBox="0 0 800 150">
+                        <style>.layer{font-family:'Google Sans';font-weight:bold;text-anchor:middle;}</style>
+                        <rect x="100" y="50" width="150" height="50" fill="#E8F0FE" stroke="#1A73E8"/>
+                        <text x="175" y="80" class="layer">Embeddings</text>
+                        <rect x="325" y="50" width="150" height="50" fill="#F3E8FD" stroke="#9333EA"/>
+                        <text x="400" y="80" class="layer">Multi-Head</text>
+                        <rect x="550" y="50" width="150" height="50" fill="#E6F4EA" stroke="#34A853"/>
+                        <text x="625" y="80" class="layer">FFN</text>
+                        <path d="M250 75H325" stroke="#5f6368" marker-end="url(#arrow-flow)"/>
+                        <path d="M475 75H550" stroke="#5f6368" marker-end="url(#arrow-flow)"/>
+                    </svg>
+                    <p class="text-center text-sm mt-2">Embeddings alimentan capas de atención que luego pasan por redes feed-forward.</p>
+                </div>
+                <h3 class="text-2xl font-bold mt-8 mb-4">El Camino Hacia Adelante: De la Arquitectura a los Titanes</h3>
+                <p>Entender la arquitectura del Transformer es como entender cómo se fabrica un motor de Fórmula 1. Ahora que conoces cada pistón y cada engranaje, estás listo para pilotar los coches.</p>
+                <p class="mt-4">En el próximo códice, dejaremos de hablar de la arquitectura en abstracto y empezaremos a estudiar los modelos específicos y titánicos que se construyeron sobre ella. Exploraremos las dos grandes filosofías que surgieron:</p>
+                <ul class="list-disc list-inside ml-4 mt-2">
+                    <li><strong>Modelos basados solo en Encoder (como BERT):</strong> Maestros en entender el contexto.</li>
+                    <li><strong>Modelos basados solo en Decoder (como GPT):</strong> Maestros en generar texto.</li>
+                </ul>
+                <p class="mt-6 text-center text-xl font-bold text-blue-500">Bienvenido al Códice IV: El Ecosistema de Modelos.</p>
+            </section>
+
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">3.7 Ciclo de Pre-Entrenamiento</h2>
+    <p class="mb-4">Este diagrama ilustra las etapas principales para entrenar un Transformer desde cero.</p>
+    <div class="visualization">
+        <svg width="100%" height="180" viewBox="0 0 800 180">
+            <style>.phase{font-family:'Google Sans';font-weight:bold;text-anchor:middle;} .line{stroke:#5f6368;stroke-width:2;marker-end:url(#arr);} </style>
+            <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <g><rect x="50" y="60" width="160" height="40" rx="8" fill="#E8F0FE"/><text x="130" y="85" class="phase">Corpus</text></g>
+            <path d="M210 80H320" class="line" />
+            <g><rect x="320" y="60" width="160" height="40" rx="8" fill="#E6F4EA"/><text x="400" y="85" class="phase">Tokenización</text></g>
+            <path d="M480 80H590" class="line" />
+            <g><rect x="590" y="60" width="160" height="40" rx="8" fill="#FEF7E0"/><text x="670" y="85" class="phase">Optimización</text></g>
+        </svg>
+    </div>
+<section class="content-section">
+    <h2 class="text-3xl font-bold mb-6">5. Caso de Negocio: Traducción de Documentos Legales</h2>
+    <p class="mb-4">Empresas internacionales utilizan modelos Transformer para traducir contratos y reportes técnicos con gran precisión, reduciendo tiempos de entrega.</p>
+    <div class="visualization">
+        <h4 class="text-xl font-bold text-center mb-4">Flujo de Traducción</h4>
+        <svg style="max-width:500px" width="100%" height="130" viewBox="0 0 600 130">
+            <style>.phase{font-family:'Google Sans';font-weight:bold;text-anchor:middle;} .arrow{stroke:#5f6368;stroke-width:2;marker-end:url(#arr);}</style>
+            <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5f6368"/></marker></defs>
+            <g><rect x="20" y="50" width="150" height="40" rx="10" fill="#E8F0FE"/><text x="95" y="75" class="phase">Documento</text></g>
+            <path class="arrow" d="M170 70H260"/>
+            <g><rect x="260" y="50" width="150" height="40" rx="10" fill="#FCE8E6"/><text x="335" y="75" class="phase">Tokenizer</text></g>
+            <path class="arrow" d="M410 70H500"/>
+            <g><rect x="500" y="50" width="150" height="40" rx="10" fill="#E6F4EA"/><text x="575" y="75" class="phase">Traducción</text></g>
+        </svg>
+        <p class="text-center text-sm mt-2">El texto se tokeniza, el modelo produce la versión traducida y luego se reensambla.</p>
+    </div>
+</section>
+</section>
+        </div>
+    </main>
+
+    <section class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Referencias Clave</h2>
+        <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Vaswani et al. 2017 - Attention Is All You Need</li>
+            <li>Devlin et al. 2019 - BERT</li>
+            <li>Raffel et al. 2020 - T5</li>
+        </ul>
+    </section>
+
+    <section class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Glosario Rápido</h2>
+        <table class="min-w-full text-sm text-left border-collapse">
+            <thead><tr><th class="border px-2 py-1">Término</th><th class="border px-2 py-1">Descripción</th></tr></thead>
+            <tbody>
+                <tr><td class="border px-2 py-1">Self-Attention</td><td class="border px-2 py-1">Mecanismo que conecta todas las palabras entre sí.</td></tr>
+                <tr><td class="border px-2 py-1">Encoder</td><td class="border px-2 py-1">Bloque que genera representaciones profundas.</td></tr>
+                <tr><td class="border px-2 py-1">Decoder</td><td class="border px-2 py-1">Bloque que produce texto o predicciones.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="bg-gray-50 text-center py-6 text-gray-500 text-sm border-t border-gray-200 mt-12">
+        <p>Pharu Analytics 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
