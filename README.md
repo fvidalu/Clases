@@ -11,7 +11,7 @@ Estructura de los Códices
 4.	Códice IV: El Ecosistema de Modelos – Herramientas, bibliotecas y técnicas de fine‑tuning.
 5.	Códice V: La Emergencia de los Agentes – Razonamiento con prompts avanzados y acceso a herramientas.
 6.	Códice VI: Sistemas y Alineamiento – Arquitecturas multi‑agente, RLHF y principios de IA responsable.
-7.	Códice VII: Visualizaciones Dinámicas – Ejemplos de gráficos interactivos con distintas librerías.
+
 Cada página combina explicaciones con diagramas SVG y animaciones para facilitar la comprensión.
 Licencia
 Este proyecto se distribuye bajo la licencia MIT.
