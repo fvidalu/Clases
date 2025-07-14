@@ -103,7 +103,7 @@ Ingeniero Civil Industrial (U. de los Andes)
 -  Visualización: t-SNE, embeddings 3D  
 -  Bases vectoriales y pipelines RAG con FAISS y ChromaDB  
 -  Métricas: F1, BLEU, ROUGE, BERTScore  
-- ⚙ Ajuste fino con LoRA
+-  Ajuste fino con LoRA
 
 ---
 
