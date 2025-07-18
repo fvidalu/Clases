@@ -118,6 +118,8 @@ Ingeniero Civil Industrial (U. de los Andes)
 ### Laboratorios  
 
 Códice 1: https://colab.research.google.com/drive/1RkX4pRnoTu9u7fd32z3Gvvhuj7MKb2tL?usp=sharing
+Códice 2 instalar:
+https://nodejs.org/en/download
 
 ---
 
