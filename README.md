@@ -121,6 +121,9 @@ Códice 1: https://colab.research.google.com/drive/1RkX4pRnoTu9u7fd32z3Gvvhuj7MK
 
 Códice 2 instalar:
 https://nodejs.org/en/download
+https://git-scm.com/downloads/win
+
+https://colab.research.google.com/drive/1yGMkmiQ7Bff6mur-K2rmMIP_QGNtRVvs?usp=sharing
 
 ---
 
