@@ -122,9 +122,9 @@ Ingeniero Civil Industrial (U. de los Andes)
 **Códice 2** 
 Instalar: https://nodejs.org/en/download
 
-Lab: https://git-scm.com/downloads/win
+Instalar: https://git-scm.com/downloads/win
 
-https://colab.research.google.com/drive/1yGMkmiQ7Bff6mur-K2rmMIP_QGNtRVvs?usp=sharing
+Lab: https://colab.research.google.com/drive/1yGMkmiQ7Bff6mur-K2rmMIP_QGNtRVvs?usp=sharing
 
 ---
 
