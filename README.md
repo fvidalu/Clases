@@ -129,6 +129,8 @@ Instalar: https://git-scm.com/downloads/win
 
 Lab: https://colab.research.google.com/drive/1yGMkmiQ7Bff6mur-K2rmMIP_QGNtRVvs?usp=sharing
 
+Lab 2: https://colab.research.google.com/drive/1CVqH9u16Io0y8-fOuPqpScmbTI-OYBrO?usp=sharing
+
 ---
 
 ##  Descarga
